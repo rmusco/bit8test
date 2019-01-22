@@ -1,0 +1,179 @@
+﻿@model JsonDataService.Models.PersonModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Person Detail</h2>
+
+<div>
+    <h4>PersonModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Index)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Index)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Picture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EyeColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EyeColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.About)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Greeting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Greeting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FavoriteFruit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FavoriteFruit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TagsString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TagsString)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "PersonEdit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "PersonDelete", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "PersonList")
+</p>

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "PersonDetail2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/custom/lib/toastr.min.css" rel="stylesheet" />
+
+<h2>Person Detail 2</h2>
+
+<div>
+    <h4>PersonModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd id="lbl-name">
+            
+        </dd>
+
+        <dt>
+            IsActive
+        </dt>
+
+        <dd id="lbl-isactive">
+            
+        </dd>
+
+        <dt>
+            Age
+        </dt>
+
+        <dd id="lbl-age">
+            
+        </dd>
+
+        <dt>
+            Gender
+        </dt>
+
+        <dd id="lbl-gender">
+           
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd id="lbl-email">
+            
+        </dd>
+    </dl>
+</div>
+
+
+@section scripts{
+
+    <script type="text/javascript" src="~/Scripts/custom/lib/jquery-blockUI.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/lib/toastr.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/bit8.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/bit8.person.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $.bit8('http://localhost:65202/api');
+            $.bit8.person(@ViewBag.PersonId);
+        });
+
+    </script>
+
+}

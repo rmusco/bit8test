@@ -1,0 +1,55 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Load data from JSON to the DataBase
+        </p>
+        <p>
+            @using (Html.BeginForm("LoadDatabase", "Home"))
+            {
+                <input type="submit" value="Load Data from JSON File" class="btn btn-success btn-lg" />
+            }
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Using MVC</h2>
+        <p>CRUD implemented using ASP.NET MVC, sharing the same "Service Layer" used by WEBAPI</p>
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("PersonList","Home")">Go To List</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>jQuery AJAX</h2>
+        <p>
+            Get an Person using AJAX call and "Get" method of the WEBAPI<br />
+            <label>Person ID (int)</label>
+            <input type="number" class="form-control" id="txt-person-id" />
+        </p>
+        <p><a class="btn btn-primary btn-lg" id="btn-go-to-person">Go To Person</a></p>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script type="text/javascript" src="~/Scripts/custom/lib/jquery-blockUI.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/lib/toastr.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/bit8.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#btn-go-to-person').on('click', function (e) {
+                var id = $('#txt-person-id').val();
+                if ($.bit8.isNullOrEmpty(id)) {
+                    $.bit8.showError('You need to input a number for the ID.');
+                }
+                else {
+                    var url = '/Home/PersonDetail2/' + $('#txt-person-id').val();
+                    $.bit8.doRedirect(url, 'GET', null);
+                }
+            });
+        });
+
+    </script>
+
+
+}
