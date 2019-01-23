@@ -21,9 +21,14 @@ namespace JsonDataRepository
 
         protected abstract IDbSet<T> GetDbSet();
 
+        public virtual int GetTotalRecords()
+        {
+            return this.GetDbSet().Count();
+        }
+
         public virtual List<T> GetAll(int skip, int take, out int total)
         {
-            total = this.GetDbSet().Count();
+            total = this.GetTotalRecords();
             return this.GetDbSet().OrderBy(x=> x.Id).Skip(skip).Take(take).ToList();
         }
 

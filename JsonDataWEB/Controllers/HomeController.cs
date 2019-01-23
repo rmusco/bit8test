@@ -37,8 +37,15 @@ namespace JsonDataWEB.Controllers
 
         public ActionResult PersonDetail(int id)
         {
-            var obj = _personService.GetByID(id);
-            return View(obj);
+            try
+            {
+                var obj = _personService.GetByID(id);
+                return View(obj);
+            }
+            catch
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to Get Person by this id: " + id), "Home", "PersonDetail"));
+            }
         }
 
         public ActionResult PersonCreate()
@@ -51,42 +58,69 @@ namespace JsonDataWEB.Controllers
         [HttpPost]
         public ActionResult PersonCreate(PersonModel model)
         {
-            var obj = _personService.Insert(model);
-            return RedirectToAction("PersonList");
+            try
+            {
+                var obj = _personService.Insert(model);
+                return RedirectToAction("PersonList");
+            }
+            catch
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to create Person"), "Home", "PersonCreate"));
+            }
         }
 
         public ActionResult PersonEdit(int id)
         {
-            var obj = _personService.GetByID(id);
-            return View(obj);
+            try
+            {
+                var obj = _personService.GetByID(id);
+                return View(obj);
+            }
+            catch
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to Get Person by this id: " + id), "Home", "PersonDetail"));
+            }
         }
 
         [HttpPost]
         public ActionResult PersonEdit(PersonModel model)
         {
-            model.Tags = model.TagsString.Split(',').ToList();
-            var obj = _personService.Update(model);
-            return RedirectToAction("PersonList");
+            try
+            {
+                model.Tags = model.TagsString.Split(',').ToList();
+                var obj = _personService.Update(model);
+                return RedirectToAction("PersonList");
+            }
+            catch
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to edit Person"), "Home", "PersonEdit"));
+            }
         }
 
-        public RedirectToRouteResult PersonDelete(int id)
+        public ActionResult PersonDelete(int id)
         {
-            _personService.Delete(id);
-            return RedirectToAction("PersonList");
+            try
+            {
+                _personService.Delete(id);
+                return RedirectToAction("PersonList");
+            }
+            catch
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to delete Person: " + id), "Home", "PersonDelete"));
+            }
         }
 
-        [HttpPost]
-        public RedirectToRouteResult PersonDelete(PersonModel model)
+        public ActionResult LoadDatabase()
         {
-            _personService.Delete(model.Id);
-            return RedirectToAction("PersonList");
-        }
-
-
-        public RedirectToRouteResult LoadDatabase()
-        {
-            _personService.LoadDatabase();
-            return RedirectToAction("PersonList");
+            try
+            {
+                _personService.LoadDatabase();
+                return RedirectToAction("PersonList");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(new Exception("Not possible to load database. " + ex.Message), "Home", "PersonDelete"));
+            }
         }
     }
 }

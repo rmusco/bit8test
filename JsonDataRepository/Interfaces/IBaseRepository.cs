@@ -8,6 +8,7 @@ namespace JsonDataRepository.Interfaces
 {
     public interface IBaseRepository<T>
     {
+        int GetTotalRecords();
         List<T> GetAll();
         List<T> GetAll(int skip, int take, out int total);
         T GetByID(int id);

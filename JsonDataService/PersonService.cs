@@ -58,6 +58,10 @@ namespace JsonDataService
 
         public void LoadDatabase()
         {
+            var total = _personRepository.GetTotalRecords();
+            if (total > 0)
+                throw new Exception("Database is already loaded.");
+
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
