@@ -30,46 +30,50 @@ namespace ArraySum
 
         private static void ShowClosestCombination(int[] arr, int target)
         {
+            string exampleText = $"Example - {String.Join(", ", arr)} - Target = {target}";
+            string resultText;
+
             if (arr.Length < 2)
             {
-                Console.WriteLine($"Example - {String.Join(", ", arr)} - Target = {target}");
-                Console.WriteLine($"Result - Not possible to find 2 numbers");
-                Console.WriteLine("---------------------------------------");
-                return;
+                resultText = $"Result - Not possible to find 2 numbers";
             }
-            
-            int num1 = 0, num2 = 0;
-            int? diff = null;
-
-            var tmp = arr.OrderByDescending(x => x).ToArray();
-
-            for (int i = 0; i < tmp.Length - 1; i++)
+            else
             {
-                bool found = false;
+                int num1 = 0, num2 = 0;
+                int? diff = null;
 
-                for (int j = i + 1; j < tmp.Length; j++)
+                var tmp = arr.OrderByDescending(x => x).ToArray();
+
+                for (int i = 0; i < tmp.Length - 1; i++)
                 {
-                    var currDiff = Math.Abs(target - (tmp[i] + tmp[j]));
-                    if (diff.HasValue && currDiff >= diff)
-                    {
-                        if (tmp[i] > target)
-                            continue;
+                    bool found = false;
 
-                        found = true;
-                        break;
+                    for (int j = i + 1; j < tmp.Length; j++)
+                    {
+                        var currDiff = Math.Abs(target - (tmp[i] + tmp[j]));
+                        if (diff.HasValue && currDiff >= diff)
+                        {
+                            if (tmp[i] > target)
+                                continue;
+
+                            found = true;
+                            break;
+                        }
+
+                        num1 = tmp[i];
+                        num2 = tmp[j];
+                        diff = currDiff;
                     }
 
-                    num1 = tmp[i];
-                    num2 = tmp[j];
-                    diff = currDiff;
+                    if (found)
+                        break;
                 }
 
-                if (found)
-                    break;
+                resultText = $"Result - {num1} + {num2}";
             }
 
-            Console.WriteLine($"Example - {String.Join(", ", arr)} - Target = {target}");
-            Console.WriteLine($"Result - {num1} + {num2}");
+            Console.WriteLine(exampleText);
+            Console.WriteLine(resultText);
             Console.WriteLine("---------------------------------------");
         }
 

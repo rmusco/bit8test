@@ -21,7 +21,7 @@
         <p>
             Get an Person using AJAX call and "Get" method of the WEBAPI<br />
             <label>Person ID (int)</label>
-            <input type="number" class="form-control" id="txt-person-id" />
+            <input type="number" class="form-control number" id="txt-person-id" />
         </p>
         <p><a class="btn btn-primary btn-lg" id="btn-go-to-person">Go To Person</a></p>
     </div>
@@ -32,11 +32,16 @@
 
     <script type="text/javascript" src="~/Scripts/custom/lib/jquery-blockUI.js"></script>
     <script type="text/javascript" src="~/Scripts/custom/lib/toastr.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom/lib/jquery.mask.min.js"></script>
     <script type="text/javascript" src="~/Scripts/custom/bit8.js"></script>
 
     <script type="text/javascript">
 
         $(document).ready(function () {
+            $.bit8('http://localhost:65202/api');
+
+            $('.number').mask('0000');
+
             $('#btn-go-to-person').on('click', function (e) {
                 var id = $('#txt-person-id').val();
                 if ($.bit8.isNullOrEmpty(id)) {

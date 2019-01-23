@@ -187,6 +187,7 @@
     <Content Include="Scripts\custom\bit8.js" />
     <Content Include="Scripts\custom\bit8.person.js" />
     <Content Include="Scripts\custom\lib\jquery-blockUI.js" />
+    <Content Include="Scripts\custom\lib\jquery.mask.min.js" />
     <Content Include="Scripts\custom\lib\toastr.min.css" />
     <Content Include="Scripts\custom\lib\toastr.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

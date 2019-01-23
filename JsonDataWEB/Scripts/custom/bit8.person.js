@@ -1,7 +1,7 @@
 ﻿/// <reference path="bit8.js" />
 $.bit8.person = function (id) {
 
-    $.bit8.doRequest("/Person/" + id, 'GET', true, null, getSuccess, getError);
+    $.bit8.doRequest("/Person/" + id, 'GET', true, null, getSuccess, getError, true);
 
     function getSuccess(obj) {
         if (obj.ActionSucceeded) {
